@@ -5,10 +5,10 @@ ENV TimeZone="Asia/Shanghai"
 ENV LANG=C.UTF-8
 
 COPY docker/sources.list /etc/apt/sources.list
-COPY docker/resolv.conf /etc/resolv.conf
 
 RUN apt-get update && apt-get install -y \
-    imagemagick
+    imagemagick \
+    ffmpeg
 
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/*
@@ -16,7 +16,7 @@ RUN apt-get clean && \
 WORKDIR /app
 
 COPY . .
-RUN pip install --no-cache-dir -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/ --trusted-host=mirrors.aliyun.com
+RUN pip install --no-cache-dir -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple/
 
 
 CMD ["python", "main.py"]

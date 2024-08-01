@@ -2,8 +2,8 @@ version: '3.8'
 
 services:
   media_clip:
-    name: mdeia_clip_api
-    image: media_clip:v0.1
+    container_name: media_clip_api
+    image: media-clip:v0.1
     volumes:
       - /data:/data
       - ./.cache:/root/.cache
