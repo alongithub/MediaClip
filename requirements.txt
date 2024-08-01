@@ -3,3 +3,4 @@ pysrt
 moviepy
 fastapi
 uvicorn
+ffmpeg

@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  media_clip:
+    name: mdeia_clip_api
+    image: media_clip:v0.1
+    volumes:
+      - /data:/data
+      - ./.cache:/root/.cache
+    ports:
+      - "3336:3336"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
+    restart: always
+    # command: tail -f /dev/null

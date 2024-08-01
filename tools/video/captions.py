@@ -1,8 +1,9 @@
 from moviepy.editor import TextClip, VideoFileClip, CompositeVideoClip
 from pysrt import open as open_srt
 from infra.logger import logger
+from typing import List
 
-def get_area_size(video_size: list[int], area_size: list[int]):
+def get_area_size(video_size: List[int], area_size: List[int]):
     width = area_size[0]
     height = area_size[1]
     
@@ -26,7 +27,7 @@ def get_area_size(video_size: list[int], area_size: list[int]):
 
     return (width, height)
 
-def get_area_position(area_position: list[str]):
+def get_area_position(area_position: List[str]):
     x = area_position[0]
     y = area_position[1]
 
@@ -50,8 +51,8 @@ def srt_caption(
     fontsize: int = 60,
     font_color: str = 'white',
     kerning: int = 0,
-    area_size: list[int] = [0.8, 0],
-    area_position: list[str] = ['center', 'bottom'],
+    area_size: List[int] = [0.8, 0],
+    area_position: List[str] = ['center', 'bottom'],
        
 ):
     logger.debug(f"srt：{srt_file} \nvideo: {video_file}")

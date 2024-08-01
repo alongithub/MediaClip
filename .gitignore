@@ -1,5 +1,6 @@
 __pycache__
 .git
-/workspace
+/output
 
 .DS_Store
+.cache

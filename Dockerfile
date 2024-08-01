@@ -19,6 +19,4 @@ COPY . .
 RUN pip install --no-cache-dir -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/ --trusted-host=mirrors.aliyun.com
 
 
-
-
 CMD ["python", "main.py"]

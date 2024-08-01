@@ -1,3 +1,17 @@
+# MediaClip
+
+音视频处理用到的一些工具api
+
+## features
+- [x] 音频生成字幕，
+- [x] 字幕校对
+- [x] srt 2 video
+- [ ] 语言检测
+- [ ] fast-wisper
+- [ ] funasr
+- [ ] 音频分割
+- [ ] webui
+
 ## init
 
 ### 安装 imagemagick
@@ -12,20 +26,25 @@ sudo apt-get install imagemagick
 
 ### 安装 python 环境
 ```bash
+conda create -n media-clip python=3.8
+conda activate media-clip
 pip install -r requirements.txt
 ```
 
 ## usage
 
-### 生成字幕文件
+### run
+1. by conda
 ```bash
-python ./main.py
+python main.py
 ```
 
-### 字幕矫正【可选】
-
-
-### 添加到视频
+2. by docker
 ```bash
-python ./add_srt.py
+docker build -t media-clip:v0.1 .
+docker compose -f docker-compose.yml up -d
 ```
+
+### api doc
+
+localhost:3335/docs
