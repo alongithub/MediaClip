@@ -14,14 +14,14 @@
 
 ## init
 
-### 安装 imagemagick
+### 安装 imagemagick ffmpeg
 ```bash
 # for mac
-brew install imagemagick
+brew install imagemagick ffmpeg
 
 # for linux
 sudo apt-get update
-sudo apt-get install imagemagick
+sudo apt-get install imagemagick ffmpeg
 ```
 
 ### 安装 python 环境
@@ -47,4 +47,4 @@ docker compose -f docker-compose.yml up -d
 
 ### api doc
 
-localhost:3335/docs
+localhost:3336/docs
