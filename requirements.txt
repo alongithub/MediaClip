@@ -4,3 +4,4 @@ moviepy
 fastapi
 uvicorn
 ffmpeg
+soundfile

@@ -9,7 +9,7 @@
 - [ ] 语言检测
 - [ ] fast-wisper
 - [ ] funasr
-- [ ] 音频分割
+- [x] 音频分割
 - [ ] webui
 
 ## init
