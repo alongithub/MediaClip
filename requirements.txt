@@ -5,3 +5,6 @@ fastapi
 uvicorn
 ffmpeg
 soundfile
+funasr
+torchaudio
+modelscope

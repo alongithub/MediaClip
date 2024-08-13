@@ -2,6 +2,7 @@ import os
 from fastapi import FastAPI, Body, HTTPException
 from middleware.logger import LoggerMiddleware
 from pydantic import BaseModel, Field
+from tools.asr.funasr_asr import only_asr
 from tools.asr.whisper_asr import execute_asr, keep_slice
 from tools.audio.slice import AudioSlicer
 from tools.srt import check_diff
@@ -122,7 +123,6 @@ async def slice_audio(
         segments = execute_asr(audio_file)
         keep_slice(segments, body.keep_silent) # 保持最长0.5s的静默时间
         slice_list = get_slice_list(segments, sliding_slice=body.sliding_slice, max_length=body.max_length, min_length=body.min_length)         
-
         audio =  AudioSlicer(audio_file)
         for s in slice_list:
             start = s['start']
@@ -130,6 +130,15 @@ async def slice_audio(
             output_audio = os.path.join(body.output_dir, f'{base_name}_{start}_{end}.wav')
             audio.slice(start, end, output_audio)
             output_audios.append(output_audio)
+        
+    for output_audio in output_audios:
+        text = only_asr(output_audio)
+        dir_name = os.path.dirname(output_audio)
+        base_name = os.path.basename(output_audio)
+        file_name = os.path.splitext(base_name)[0]
+        lab_file = os.path.join(dir_name, f'{file_name}.lab')
+        with open(lab_file, 'w', encoding='utf-8') as f:
+            f.write(text)
             
     return AudioSliceResponse(output_audios=output_audios)
 
